@@ -1,0 +1,34 @@
+@keyframes zoomIn {
+  0% {
+      -ms-transform: scale(0.75, 0.75); /* IE 9 */
+      -webkit-transform: scale(0.75, 0.75); /* Safari */
+      transform: scale(0.75, 0.75);
+      opacity: 0;
+  }
+
+  100% {
+      -ms-transform: scale(1, 1); /* IE 9 */
+      -webkit-transform: scale(1, 1); /* Safari */
+      transform: scale(1, 1);
+      opacity: 1;    
+  }
+}
+
+h2, p, ul {
+    text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.Header{
+  animation-name: zoomIn;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.List {
+  font-size: 25px;
+}

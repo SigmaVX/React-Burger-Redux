@@ -1,0 +1,58 @@
+.AddStuff{
+    font-size: 40px;
+    color: lightblue;
+    font-family: 'Ultra', serif;
+}
+
+.Burger{
+    width: 500px;
+    margin: 0px auto;
+    padding: 30px;
+    height: 500px;
+    overflow-y: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: rgba(0,0,0,.5);
+    border-radius: 20px;
+
+}
+
+.BurgerWrap{
+    background-color: #aaa;
+    background-image: url("../../assets/images/BobsBurgers.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin: 0px auto;
+    padding: 20px 0px;
+  
+}
+
+/* Small Screens - Vertical Phones  */
+@media (min-width: 300px) and (min-height: 401px){
+    .Burger{
+        width: 350px;
+        height: 350px;
+        /* background-color: blue; */
+    }
+}
+
+/* Sideways Phones Larger Than 500 PX Wide and Smaller Than 400px Height */
+@media (min-width: 500px) and (max-height: 400px){
+    .Burger{
+        width: 400px;
+        height: 250px;
+        /* background-color: red; */
+    }
+}
+
+/* Horizontal Tablet */
+@media (min-width: 1000px) and (max-height: 768px){
+    .Burger{
+        width: 450px;
+        height: 400px;
+        /* background-color: purple; */
+    }
+}
