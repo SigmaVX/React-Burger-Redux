@@ -35,3 +35,9 @@ All the wonders of React JS in a simple burger.  While burgers are great, this a
 
 * Forms with custom validation
 
+* Higher order components 
+
+* Interceptors for error handeling
+
+* Customized Axios instances for HTTP
+
