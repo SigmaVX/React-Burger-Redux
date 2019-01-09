@@ -4,10 +4,10 @@ import BurgerControls from "../../components/Burger/BuildControls/BuildControls"
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary"; 
 import Spinner from "../../components/UI/Spinner/Spinner";
-import axios from "../../API/Axios/Axios-Orders";
 import ErrorHandler from "../ErrorHandler/ErrorHandler";
 import { connect } from "react-redux";
-import * as actionTypes from "../../store/actions";
+import * as burgerBuilderActions from "../../store/actions/index";
+import axios from "../../API/Axios/Axios-Orders";
 
 
 class BurgerBuilder extends Component {
@@ -15,15 +15,12 @@ class BurgerBuilder extends Component {
     // Using State For UI Logic Only
     state = {
         showModal: false,
-        loading: false
+        // loading: false
     }
 
     componentDidMount(){
-        // axios.get("/ingredients.json")
-        //     .then(response=>{
-        //         this.setState({ingredients: response.data})
-        //     })
-        //     .catch(error=>{console.log(error)})
+        console.log(this.props);
+        this.props.onInitIngredients();
     }
 
     updatePurchaseState = (ingredients) =>{
@@ -70,13 +67,15 @@ class BurgerBuilder extends Component {
         // console.log(disabledItems);
 
         // Conditional For Spinner and Order Summary
+        
         let orderSummary = null;
-        if(this.state.loading){
-            orderSummary = <Spinner/>
-        }
+        // Not Used Here Since We Have Redux Running Global Logic
+        // if(this.state.loading){
+        //     orderSummary = <Spinner/>
+        // }
 
         // Conditional Spinner For Burger While Loading From State
-        let burger = <Spinner/>;
+        let burger = this.props.error ? <h1 style={{marginTop: "50%", textAlign: "center"}}>Ingredients Can't Be Loaded</h1> : <Spinner/>;
         if(this.props.ings){    
             burger = (
                 <React.Fragment>
@@ -93,11 +92,11 @@ class BurgerBuilder extends Component {
                 </React.Fragment>
             );
             orderSummary = <OrderSummary 
-                ingredients={this.props.ings} 
-                closeModal={this.closeModal}
-                purchaseBurger={this.purchaseBurger}
-                totalPrice={this.props.price}
-            />
+                                ingredients={this.props.ings} 
+                                closeModal={this.closeModal}
+                                purchaseBurger={this.purchaseBurger}
+                                totalPrice={this.props.price}
+                            />
         }
         
 
@@ -114,18 +113,27 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = (state) =>{
     return{
-        ings: state.ingredients,
-        price: state.totalOrderPrice
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalOrderPrice,
+        error: state.burgerBuilder.error
 
     }   
 }
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        onIngredientAdded: (ingName)=> dispatch({type: actionTypes.ADD_INGREDIENT, ingredient: ingName}),
-        onIngredientRemove: (ingName)=> dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredient: ingName})
+        onIngredientAdded: (ingName)=> dispatch(burgerBuilderActions.addIngredient(ingName)),
+        onIngredientRemove: (ingName)=> dispatch(burgerBuilderActions.removeIngredient(ingName)),
+        onInitIngredients: ()=>dispatch(burgerBuilderActions.initIngredients())
         
     }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ErrorHandler(BurgerBuilder, axios));
+
+
+// Alternate Setup of mapDispatchToProps
+// return{
+//     onIngredientAdded: (ingName)=> dispatch({type: actionTypes.ADD_INGREDIENT, ingredient: ingName}),
+//     onIngredientRemove: (ingName)=> dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredient: ingName}) 
+// }

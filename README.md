@@ -41,3 +41,11 @@ All the wonders of React JS in a simple burger.  While burgers are great, this a
 
 * Customized Axios instances for HTTP
 
+* Redux DevTools Middleware
+
+* Redux Action Creator Fuctions
+
+* Modular Redux Action Types
+
+* Redux Async Reducer Functions
+
