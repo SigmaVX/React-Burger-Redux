@@ -38,3 +38,61 @@ export const purchaseBurger = (orderData) => {
             });
     }
 }
+
+// Sync Code
+export const purshaseBurgerInit = () =>{
+    return{
+        type: ActionTypes.PURCHASE_BURGER_INIT
+    }
+}
+
+// Sync Code
+export const fetchOrdersSuccess = (orders) =>{
+    return{
+        type: ActionTypes.FETCH_ORDERS_SUCCESS,
+        orders: orders
+    }
+}
+
+// Sync Code
+export const fetchOrdersFail = (error) =>{
+    return{
+        type: ActionTypes.FETCH_ORDERS_FAIL,
+        error: error
+    }
+}
+
+// Sync Code
+export const fetchOrdersStart = () =>{
+    return{
+        type: ActionTypes.FETCH_ORDERS_START
+    }
+}
+
+// Async Code
+export const fetchOrders = () =>{
+    return (dispatch)=>{
+        dispatch(fetchOrdersStart());
+        axios.get("/orders.json")
+        .then(res => {
+            // Convert res from an object to an array of objects
+            let ordersArray = [];
+            for(let key in res.data){
+                console.log("Key Is: ", key);
+                console.log("Data Is: ", res.data[key]);
+                ordersArray.push({
+                    // Making a New Object Based on Key Object
+                    // While adding the ID for the Key Object 
+                    ...res.data[key],
+                    id: key
+                })
+            }
+            dispatch(fetchOrdersSuccess(ordersArray));
+        })
+        .catch(error => {
+            dispatch(fetchOrdersFail(error));
+        })
+    }
+}
+
+

@@ -2,60 +2,53 @@ import React, {Component} from "react";
 import Order from "../../components/Order/Order";
 import axios from "../../API/Axios/Axios-Orders";
 import errorHandler from "../ErrorHandler/ErrorHandler";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 
 class Orders extends Component{
 
-    state={
-        orders: [],
-        loading: true,
-        error: ""
-    }
-
     componentDidMount(){
-        axios.get("/orders.json")
-            .then(res => {
-                // Convert res from an object to an array of objects
-                let ordersArray = [];
-                for(let key in res.data){
-                    console.log("Key Is: ", key);
-                    console.log("Data Is: ", res.data[key]);
-                    ordersArray.push({
-                        // Making a New Object Based on Key Object
-                        // While adding the ID for the Key Object 
-                        ...res.data[key],
-                        id: key
-                    })
-                }
-                this.setState({
-                    orders: ordersArray,
-                    loading: false
-                })
-            })
-            .catch(error => {
-                this.setState({
-                    // Note: we are only storing error in state
-                    error: error,
-                    loading: false
-                })
-            })
+      this.props.onFetchOrders();
     }
     render(){
-        return(
-            <div>
-                <h1 style={{textAlign: "center", paddingTop: "30px"}}>Order History</h1>
-                {this.state.orders.map(order =>(
-                    <Order 
-                        key={order.id}
-                        ingredients={order.ingredients}
-                        // Add + To Convert String to Number Type
-                        price={+order.orderPrice}
-                        id={order.id}
-                        />
-                ))}
-            </div>
-        );
+
+        let orders = <Spinner />;
+        if (!this.props.loading){
+            orders = (
+                <div>
+                    <h1 style={{textAlign: "center", paddingTop: "30px"}}>Order History</h1>
+                    {this.props.orders.map(order =>(
+                        <Order 
+                            key={order.id}
+                            ingredients={order.ingredients}
+                            // Add + To Convert String to Number Type
+                            price={+order.orderPrice}
+                            id={order.id}
+                            />
+                    ))}
+                </div>
+            )
+        }
+
+        return orders;
     }
 }
 
-export default errorHandler(Orders, axios);
+const mapStateToProps = (state) =>{
+    return{
+        orders: state.order.orders,
+        loading: state.order.loading,
+        purchased: state.order.purchased,
+        error: state.order.error
+    }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        onFetchOrders: ()=>dispatch(actions.fetchOrders())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(errorHandler(Orders, axios));

@@ -45,7 +45,11 @@ All the wonders of React JS in a simple burger.  While burgers are great, this a
 
 * Redux Action Creator Fuctions
 
+* Redux With Local UI State
+
 * Modular Redux Action Types
 
 * Redux Async Reducer Functions
+
+* Refactored Reducers With Utility Functions
 

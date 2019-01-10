@@ -1,7 +1,9 @@
 import * as actionTypes from "../actions/actionTypes";
-
+import {updateObject} from "../utilities/utilities";
 
 // Ruducer file to update and initiate Redux state
+// This showcases some traditioanl ways to update and
+// Some updates using the ultility functions to steamline code
 const initialState = {
     ingredients: null,
     unitPrice: {
@@ -37,6 +39,8 @@ const reducer = (state = initialState, action) =>{
                 totalOrderPrice: state.totalOrderPrice - state.unitPrice[action.ingredient]
             }
         case actionTypes.SET_INGREDIENTS:
+
+
             return{
                 ...state,
                 // Maps The Firebase Data In The Order We Want Displayed
@@ -48,14 +52,11 @@ const reducer = (state = initialState, action) =>{
                     cheese: action.ingredients.cheese,
                     meat: action.ingredients.meat
                 },
-
+                totalOrderPrice: 4,
                 error: false
             }
         case actionTypes.FETCH_INGREDIENTS_FAILED:
-            return{
-                ...state,
-                error: true
-            }
+            return updateObject(state, {error: true});
         default:
             return state;
 

@@ -18,8 +18,10 @@ class Checkout extends Component{
         // Redirects If No Ingredients (Happens If User Reloads Page)
         let summary = <Redirect to="/"/>;
         if(this.props.ings){
+            const purchaseRedirect = this.props.purchased ? <Redirect to="/"/> : null;
             summary = (
                 <div>
+                    {purchaseRedirect}
                     <Summary 
                         ingredients={this.props.ings}
                         checkoutCancel={this.cancelCheckout}
@@ -38,7 +40,8 @@ class Checkout extends Component{
 const mapStateToProps = (state) =>{
     return{
         ings: state.burgerBuilder.ingredients,
-        price: state.burgerBuilder.totalOrderPrice
+        price: state.burgerBuilder.totalOrderPrice,
+        purchased: state.order.purchased
     }   
 }
 

@@ -6,7 +6,7 @@ import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import ErrorHandler from "../ErrorHandler/ErrorHandler";
 import { connect } from "react-redux";
-import * as burgerBuilderActions from "../../store/actions/index";
+import * as actions from "../../store/actions/index";
 import axios from "../../API/Axios/Axios-Orders";
 
 
@@ -49,7 +49,8 @@ class BurgerBuilder extends Component {
     }
 
     purchaseBurger = () =>{
-        
+        // Sets purchased to false in Redux
+        this.props.onPurchaseInit();
         this.props.history.push({pathname: '/checkout'});
     }
 
@@ -64,10 +65,8 @@ class BurgerBuilder extends Component {
                 disabledItems[key] = false;
             }
         }
-        // console.log(disabledItems);
 
         // Conditional For Spinner and Order Summary
-        
         let orderSummary = null;
         // Not Used Here Since We Have Redux Running Global Logic
         // if(this.state.loading){
@@ -122,9 +121,10 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        onIngredientAdded: (ingName)=> dispatch(burgerBuilderActions.addIngredient(ingName)),
-        onIngredientRemove: (ingName)=> dispatch(burgerBuilderActions.removeIngredient(ingName)),
-        onInitIngredients: ()=>dispatch(burgerBuilderActions.initIngredients())
+        onIngredientAdded: (ingName)=> dispatch(actions.addIngredient(ingName)),
+        onIngredientRemove: (ingName)=> dispatch(actions.removeIngredient(ingName)),
+        onInitIngredients: ()=>dispatch(actions.initIngredients()),
+        onPurchaseInit: ()=>dispatch(actions.purshaseBurgerInit())
         
     }
 }

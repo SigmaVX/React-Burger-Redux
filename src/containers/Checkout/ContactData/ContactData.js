@@ -120,7 +120,8 @@ class ContactData extends Component{
             orderPrice: this.props.price,
             orderData: formData
         }
-
+        
+        // Sets purchased to True in Redux
         this.props.onOrderBurger(order);
     }
 
