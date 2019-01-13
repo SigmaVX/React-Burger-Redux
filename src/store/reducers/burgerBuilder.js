@@ -13,7 +13,8 @@ const initialState = {
         meat: 1.5
     },
     totalOrderPrice: 4,
-    error: false
+    error: false,
+    building: false
 }
 
 const reducer = (state = initialState, action) =>{
@@ -27,7 +28,8 @@ const reducer = (state = initialState, action) =>{
                     // [action.ingredients] is a variable passed by the payload
                     [action.ingredient]: state.ingredients[action.ingredient] + 1
                 },
-                totalOrderPrice: state.totalOrderPrice + state.unitPrice[action.ingredient]
+                totalOrderPrice: state.totalOrderPrice + state.unitPrice[action.ingredient],
+                building: true
             };
         case actionTypes.REMOVE_INGREDIENT:
             return {
@@ -36,11 +38,10 @@ const reducer = (state = initialState, action) =>{
                     ...state.ingredients,
                     [action.ingredient]: state.ingredients[action.ingredient] - 1
                 },
-                totalOrderPrice: state.totalOrderPrice - state.unitPrice[action.ingredient]
+                totalOrderPrice: state.totalOrderPrice - state.unitPrice[action.ingredient],
+                building: true
             }
         case actionTypes.SET_INGREDIENTS:
-
-
             return{
                 ...state,
                 // Maps The Firebase Data In The Order We Want Displayed
@@ -53,7 +54,8 @@ const reducer = (state = initialState, action) =>{
                     meat: action.ingredients.meat
                 },
                 totalOrderPrice: 4,
-                error: false
+                error: false,
+                building: false
             }
         case actionTypes.FETCH_INGREDIENTS_FAILED:
             return updateObject(state, {error: true});

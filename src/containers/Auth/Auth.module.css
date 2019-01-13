@@ -1,5 +1,8 @@
-.ContactData{
+.Auth{
     margin: 20px auto;
+    position: absolute;
+    top: 35%;
+    left: 20%;
     width: 80%;
     text-align: center;
     box-shadow: 0 2px 3px #ccc;
@@ -7,15 +10,18 @@
     padding: 10px;
     box-sizing: border-box;
     border-radius: 10px;
-
 }
 
-.ContactData input{
+.Auth input{
     border-radius: 10px;
 }
 
+h2 {
+    text-align: center; 
+}
+
 @media (min-width: 600px){
-    .ContactData{
+    .Auth{
         width: 500px;
     }
 }

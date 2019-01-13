@@ -3,46 +3,70 @@ import Layout from "./containers/Layout/Layout";
 import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
 import Checkout from "./containers/Checkout/Checkout";
 import Orders from "./containers/Orders/Orders";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import {createStore, applyMiddleware, compose, combineReducers} from "redux";
-import burgerBuilderReducer from "./store/reducers/burgerBuilder";
-import orderReducer from "./store/reducers/order";
-import thunk from "redux-thunk";
+import Auth from "./containers/Auth/Auth";
+import Logout from "./containers/Auth/Logout/Logout";
+import {Switch, Route, withRouter, Redirect} from "react-router-dom";
 
-// Store Setup With No Middleware - To Allow For Redux DevTools
-// const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import {connect} from "react-redux";
+import * as actions from "./store/actions/index";
 
-const rootReducer = combineReducers({
-    burgerBuilder: burgerBuilderReducer,
-    order: orderReducer 
-})
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 
 
 class App extends Component {
+
+  componentDidMount(){
+    this.props.onLoadAuthFromStorage();
+  }
+
   render() {
+
+    let routes = (
+      <Switch>
+        <Route path="/auth" component={Auth}/>
+        <Route path="/" exact component={BurgerBuilder}/>
+        {/* Sends Unknow Routes To Home*/}
+        <Redirect to="/"/>
+        </Switch>
+    );
+
+    if(this.props.isAuthenticated){
+      routes = (
+        <Switch>
+          <Route path="/checkout" component={Checkout}/>
+          <Route path="/orders" component={Orders}/>
+          <Route path="/auth" component={Auth}/>
+          <Route path="/logout" component={Logout}/>
+          <Route path="/" exact component={BurgerBuilder}/>
+        </Switch>
+      );
+    }
+
     return (
-      <Provider store={store}>
-        <BrowserRouter>
+     
           <div>
             <Layout>
-              <Switch>
-                <Route path="/checkout" component={Checkout}/>
-                <Route path="/orders" component={Orders}/>
-                <Route path="/" exact component={BurgerBuilder}/>
-              </Switch>
+              {routes}
             </Layout>
           </div>
-        </BrowserRouter>
-      </Provider>
+       
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+      isAuthenticated: state.auth.token !== null
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    onLoadAuthFromStorage: ()=>dispatch(actions.authCheckState())
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+
 
 // Firebase URL: https://react-buger-c3d8d.firebaseio.com/

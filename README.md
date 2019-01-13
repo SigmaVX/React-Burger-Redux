@@ -1,7 +1,7 @@
 # React-Burger
-All the wonders of React JS in a simple burger.  While burgers are great, this app primarily focuses on displaying a variety of React fundamentals.  This includes:
+All the wonders of React JS and Redux in a simple burger.  While burgers are great, this app primarily focuses on displaying a variety of React & Redux fundamentals.  This includes:
 
-* A detailed breakdown of elements into components, containers, assets, and higher order components
+* A granular breakdown of components and containers
 
 * Conditional rendering
 
@@ -23,8 +23,6 @@ All the wonders of React JS in a simple burger.  While burgers are great, this a
 
 * Loading CSS spinner for dynamic components
 
-* Global error handler with Axios Interceptors
-
 * React Router navigation
 
 * Nested routes
@@ -37,7 +35,7 @@ All the wonders of React JS in a simple burger.  While burgers are great, this a
 
 * Higher order components 
 
-* Interceptors for error handeling
+* Axios Interceptors for error handeling
 
 * Customized Axios instances for HTTP
 
@@ -52,4 +50,12 @@ All the wonders of React JS in a simple burger.  While burgers are great, this a
 * Redux Async Reducer Functions
 
 * Refactored Reducers With Utility Functions
+
+* Token Based User Authentication
+
+* Guarded Routes/Pages Based On Login
+
+* Conditional Redirects Based On State
+
+* Local Storage Of Authentication Credentials
 

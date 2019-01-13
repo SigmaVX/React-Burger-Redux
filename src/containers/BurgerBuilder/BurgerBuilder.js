@@ -40,7 +40,16 @@ class BurgerBuilder extends Component {
     }
 
     showModal = () =>{
-        this.setState({showModal: true});
+        // Opens Purchase Modal If User Is Logged In 
+        if(this.props.isAuthenticated){
+            this.setState({showModal: true}); 
+            // Else Sends To Login - Sign Up
+        } else {
+            // Setting where user should go after they sign in
+            // Updates redux so path is stored and used in Auth.js
+            this.props.onSetAuthRedirectPath("/checkout");
+            this.props.history.push("/auth");
+        }
     }
 
     closeModal = () =>{
@@ -86,6 +95,7 @@ class BurgerBuilder extends Component {
                         disabledItems={disabledItems}
                         price={this.props.price}
                         canBuy={this.updatePurchaseState(this.props.ings)}
+                        isAuth={this.props.isAuthenticated}
                         orderClicked={this.showModal}
                     />
                 </React.Fragment>
@@ -114,8 +124,8 @@ const mapStateToProps = (state) =>{
     return{
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalOrderPrice,
-        error: state.burgerBuilder.error
-
+        error: state.burgerBuilder.error,
+        isAuthenticated: state.auth.token !== null
     }   
 }
 
@@ -124,8 +134,8 @@ const mapDispatchToProps = (dispatch) =>{
         onIngredientAdded: (ingName)=> dispatch(actions.addIngredient(ingName)),
         onIngredientRemove: (ingName)=> dispatch(actions.removeIngredient(ingName)),
         onInitIngredients: ()=>dispatch(actions.initIngredients()),
-        onPurchaseInit: ()=>dispatch(actions.purshaseBurgerInit())
-        
+        onPurchaseInit: ()=>dispatch(actions.purshaseBurgerInit()),
+        onSetAuthRedirectPath: (path)=>dispatch(actions.setAuthRedirectPath(path))
     }
 }
 

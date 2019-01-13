@@ -9,7 +9,9 @@ const Toolbar = (props) =>{
         <header className={style.Toolbar}>
             <DrawerToggle toggle={props.toggleDrawer}/>
             <div className={style.LogoWrap}><Logo/></div>
-            <nav className={style.DesktopHide}><NavigationItems/></nav>
+            <nav className={style.DesktopHide}>
+                <NavigationItems isAuthenticated={props.isAuth}/>
+            </nav>
         </header>
     );
 }

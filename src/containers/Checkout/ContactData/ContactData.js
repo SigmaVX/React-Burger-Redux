@@ -118,11 +118,12 @@ class ContactData extends Component{
         let order = {
             ingredients: this.props.ings,
             orderPrice: this.props.price,
-            orderData: formData
+            orderData: formData,
+            userId: this.props.userId
         }
         
         // Sets purchased to True in Redux
-        this.props.onOrderBurger(order);
+        this.props.onOrderBurger(order, this.props.token);
     }
 
     inputChangeHandler = (event, id) =>{
@@ -228,13 +229,15 @@ const mapStateToProps = (state) =>{
     return{
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalOrderPrice,
-        loading: state.order.loading
+        loading: state.order.loading,
+        token: state.auth.token,
+        userId: state.auth.userId
     }   
 }
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        onOrderBurger: (orderData)=>dispatch(orderActions.purchaseBurger(orderData)) 
+        onOrderBurger: (orderData, token)=>dispatch(orderActions.purchaseBurger(orderData, token)) 
     }
 }
 
