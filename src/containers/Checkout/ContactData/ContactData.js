@@ -7,7 +7,7 @@ import axios from "../../../API/Axios/Axios-Orders";
 import {connect} from "react-redux";
 import withErrorHandler from "../../ErrorHandler/ErrorHandler";
 import * as orderActions from "../../../store/actions/index";
-
+import {validationCheck} from "../../../constants/utilities";
 
 class ContactData extends Component{
     
@@ -108,7 +108,7 @@ class ContactData extends Component{
 
     orderHandler = (event) =>{
         event.preventDefault();
-        console.log('Contact Data Props: ', this.props.ingredients);
+        // console.log('Contact Data Props: ', this.props.ingredients);
         const formData = {};
         for(let key in this.state.orderForm){
             formData[key] = this.state.orderForm[key].value;
@@ -128,7 +128,7 @@ class ContactData extends Component{
 
     inputChangeHandler = (event, id) =>{
         // Input Values Stored In event.target.value
-        console.log(event.target.value);
+        // console.log(event.target.value);
         // Copy State So It Is Immutable
         const updatedForm = {
             ...this.state.orderForm
@@ -140,7 +140,7 @@ class ContactData extends Component{
         // Update Value Of Copied Nested Object
         updatedItem.value = event.target.value;
         // Run Validation
-        updatedItem.validation.valid = this.validationCheck(updatedItem.value, updatedItem.validation);
+        updatedItem.validation.valid = validationCheck(updatedItem.value, updatedItem.validation);
         // Update To Show Input Was Modified
         updatedItem.touched = true;
         // Update Value Of Copied State With Copy Object
@@ -158,29 +158,6 @@ class ContactData extends Component{
 
         // Set State With The Copy Of State
         this.setState({orderForm : updatedForm, formIsValid : formIsValid});
-    }
-
-    validationCheck = (value, rules) =>{
-        let isValid = true;
-        if(rules.required){
-            // Set Boolean Based On If String Is Empty
-            // Trim removes white spaces
-            isValid = value.trim() !== "" && isValid;
-        }
-
-        if(rules.minLength){
-            // Set Boolean Based On Min Length Requirement
-            isValid = value.length > rules.minLength && isValid;
-            console.log(isValid); 
-        }
-
-        if(rules.maxLength){
-            // Set Boolean Based On Max Length Requirement
-            // && isValid Assures Other Rules All Pass
-            isValid = value.length < rules.maxLength && isValid; 
-        }
-
-        return isValid;
     }
 
     render(){

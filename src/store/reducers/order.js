@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import {updateObject} from "../utilities/utilities";
+import {updateObject} from "../../constants/utilities";
 
 
 // Ruducer file to update and initiate Redux state

@@ -34,7 +34,7 @@ export const logout = () =>{
 
 // Async Code
 const checkAuthorizatoin = (expirationTime) =>{
-    console.log("Token Expires: ", expirationTime);
+    // console.log("Token Expires: ", expirationTime);
     return (dispatch) =>{
         setTimeout(()=> {
             dispatch(logout());
@@ -51,15 +51,15 @@ export const auth = (email, password, isSignUp) =>{
             password: password,
             returnSecureToken: true
         }
-        console.log(isSignUp);
+        // console.log(isSignUp);
         let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyA0kQ_tIY7wlx_fMtfJ5n9iIHF6qN7gnAc'
         if(isSignUp === false) {
-            console.log("hit");
+            // console.log("hit");
             url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyA0kQ_tIY7wlx_fMtfJ5n9iIHF6qN7gnAc'
         }
         axios.post(url, authData)
             .then( (response) =>{
-                console.log(response.data);
+                // console.log(response.data);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem("token", response.data.idToken);
                 localStorage.setItem("expiration-date", expirationDate);

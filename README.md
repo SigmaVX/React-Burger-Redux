@@ -59,3 +59,5 @@ All the wonders of React JS and Redux in a simple burger.  While burgers are gre
 
 * Local Storage Of Authentication Credentials
 
+* React Lazy Loading Of Containers
+

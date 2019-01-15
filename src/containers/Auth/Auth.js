@@ -6,6 +6,7 @@ import Input from "../../components/UI/Input/Input.js";
 import style from "./Auth.module.css";
 import * as actions from "../../store/actions/index";
 import {connect} from "react-redux";
+import {validationCheck} from "../../constants/utilities";
 
 class Auth extends Component{
 
@@ -52,29 +53,6 @@ class Auth extends Component{
         }
     }
 
-    validationCheck = (value, rules) =>{
-        let isValid = true;
-        if(rules.required){
-            // Set Boolean Based On If String Is Empty
-            // Trim removes white spaces
-            isValid = value.trim() !== "" && isValid;
-        }
-
-        if(rules.minLength){
-            // Set Boolean Based On Min Length Requirement
-            isValid = value.length > rules.minLength && isValid;
-            console.log(isValid); 
-        }
-
-        if(rules.maxLength){
-            // Set Boolean Based On Max Length Requirement
-            // && isValid Assures Other Rules All Pass
-            isValid = value.length < rules.maxLength && isValid; 
-        }
-
-        return isValid;
-    }
-
     inputChangeHandler = (event, controlName) =>{
         const updatedControls = {
             ...this.state.controls,
@@ -84,7 +62,7 @@ class Auth extends Component{
                 touched: true,
                 validation: {
                     ...this.state.controls[controlName].validation,
-                    valid: this.validationCheck(event.target.value, this.state.controls[controlName].validation)
+                    valid: validationCheck(event.target.value, this.state.controls[controlName].validation)
                 } 
             }
         }

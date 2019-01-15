@@ -28,7 +28,7 @@ export const purchaseBurger = (orderData, token) => {
         dispatch(purchaseBurgerStart());
         axios.post("/orders.json?auth=" + token, orderData)
             .then(response =>{
-                console.log(response.data);
+                // console.log(response.data);
                 dispatch(purchaseBurgerSuccess(response.data.name, orderData));
 
             })
@@ -74,18 +74,15 @@ export const fetchOrders = (token, userId) =>{
     return (dispatch)=>{
         dispatch(fetchOrdersStart());
         // Query Terms To Get Orders By ID in Firebase Note the use of "" on terms
-        // const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         const queryParams = `?auth=${token}&orderBy="userId"&equalTo="${userId}"`;
-
-        // const queryParams = "?auth=" + token + "&orderBy='userId'&equalTo='" + userId + "'";
-        console.log(queryParams);
+        // console.log(queryParams);
         axios.get("/orders.json" + queryParams)
         .then(res => {
             // Convert res from an object to an array of objects
             let ordersArray = [];
             for(let key in res.data){
-                console.log("Key Is: ", key);
-                console.log("Data Is: ", res.data[key]);
+                // console.log("Key Is: ", key);
+                // console.log("Data Is: ", res.data[key]);
                 ordersArray.push({
                     // Making a New Object Based on Key Object
                     // While adding the ID for the Key Object 
