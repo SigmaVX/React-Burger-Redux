@@ -4,13 +4,13 @@ import BurgerControls from "../../components/Burger/BuildControls/BuildControls"
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary"; 
 import Spinner from "../../components/UI/Spinner/Spinner";
-import ErrorHandler from "../ErrorHandler/ErrorHandler";
+import ErrorHandler from "../../containers/HOC/ErrorHandler/ErrorHandler";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import axios from "../../API/Axios/Axios-Orders";
 
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
 
     // Using State For UI Logic Only
     state = {

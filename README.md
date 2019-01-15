@@ -61,3 +61,5 @@ All the wonders of React JS and Redux in a simple burger.  While burgers are gre
 
 * React Lazy Loading Of Containers
 
+* Basic Testing With Jest & Enzyme
+

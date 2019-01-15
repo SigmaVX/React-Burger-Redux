@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Modal from "../../components/UI/Modal/Modal";
+import Modal from "../../../components/UI/Modal/Modal";
 
 // This creates a global way to grab and display errors
 const ErrorHander = (WrappedContent, axios) =>{

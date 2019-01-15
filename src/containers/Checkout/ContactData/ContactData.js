@@ -5,7 +5,7 @@ import Input from "../../../components/UI/Input/Input";
 import style from "./ContactData.module.css";
 import axios from "../../../API/Axios/Axios-Orders";
 import {connect} from "react-redux";
-import withErrorHandler from "../../ErrorHandler/ErrorHandler";
+import withErrorHandler from "../../HOC/ErrorHandler/ErrorHandler";
 import * as orderActions from "../../../store/actions/index";
 import {validationCheck} from "../../../constants/utilities";
 
