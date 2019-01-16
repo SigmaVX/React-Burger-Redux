@@ -1,7 +1,7 @@
 {
   "main.css": "/React-Burger-Redux/static/css/main.198941bd.chunk.css",
-  "main.js": "/React-Burger-Redux/static/js/main.6f3ba6b8.chunk.js",
-  "main.js.map": "/React-Burger-Redux/static/js/main.6f3ba6b8.chunk.js.map",
+  "main.js": "/React-Burger-Redux/static/js/main.a97346c5.chunk.js",
+  "main.js.map": "/React-Burger-Redux/static/js/main.a97346c5.chunk.js.map",
   "static/css/1.87cbf134.chunk.css": "/React-Burger-Redux/static/css/1.87cbf134.chunk.css",
   "static/js/1.97436a28.chunk.js": "/React-Burger-Redux/static/js/1.97436a28.chunk.js",
   "static/js/1.97436a28.chunk.js.map": "/React-Burger-Redux/static/js/1.97436a28.chunk.js.map",
@@ -15,13 +15,13 @@
   "static/js/4.af037c16.chunk.js.map": "/React-Burger-Redux/static/js/4.af037c16.chunk.js.map",
   "runtime~main.js": "/React-Burger-Redux/static/js/runtime~main.f858b6b1.js",
   "runtime~main.js.map": "/React-Burger-Redux/static/js/runtime~main.f858b6b1.js.map",
-  "static/css/main.198941bd.chunk.css.map": "/React-Burger-Redux/static/css/main.198941bd.chunk.css.map",
+  "static/css/2.4c4e594b.chunk.css.map": "/React-Burger-Redux/static/css/2.4c4e594b.chunk.css.map",
   "static/media/Burger.module.css": "/React-Burger-Redux/static/media/BobsBurgers.563bd8dc.jpg",
   "static/media/burger-logo.png": "/React-Burger-Redux/static/media/burger-logo.b8503d26.png",
+  "static/css/main.198941bd.chunk.css.map": "/React-Burger-Redux/static/css/main.198941bd.chunk.css.map",
   "static/css/1.87cbf134.chunk.css.map": "/React-Burger-Redux/static/css/1.87cbf134.chunk.css.map",
-  "static/css/2.4c4e594b.chunk.css.map": "/React-Burger-Redux/static/css/2.4c4e594b.chunk.css.map",
   "static/css/3.7e8d79fa.chunk.css.map": "/React-Burger-Redux/static/css/3.7e8d79fa.chunk.css.map",
   "index.html": "/React-Burger-Redux/index.html",
-  "precache-manifest.b9556f4946be2b0089cb3dff4223c79a.js": "/React-Burger-Redux/precache-manifest.b9556f4946be2b0089cb3dff4223c79a.js",
+  "precache-manifest.9c99b6b36d7cfd38d552a0226bb9186a.js": "/React-Burger-Redux/precache-manifest.9c99b6b36d7cfd38d552a0226bb9186a.js",
   "service-worker.js": "/React-Burger-Redux/service-worker.js"
 }
