@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/React-Burger-Redux/static/css/3.7e8d79fa.chunk.css"
   },
   {
-    "revision": "fcdc4673f16eb1f6d900",
+    "revision": "7ca695d2672b36535c09",
     "url": "/React-Burger-Redux/static/css/main.198941bd.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/React-Burger-Redux/static/js/2.69c0c6c9.chunk.js"
   },
   {
-    "revision": "fcdc4673f16eb1f6d900",
-    "url": "/React-Burger-Redux/static/js/main.fcdc4673.chunk.js"
+    "revision": "7ca695d2672b36535c09",
+    "url": "/React-Burger-Redux/static/js/main.7ca695d2.chunk.js"
   },
   {
     "revision": "0fe03e1fd0a079102ae3",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/React-Burger-Redux/static/css/1.87cbf134.chunk.css"
   },
   {
-    "revision": "41d57e3585440af9da200dea00df1532",
+    "revision": "57b65e5fda027d6af2edd07d125db171",
     "url": "/React-Burger-Redux/index.html"
   }
 ];
