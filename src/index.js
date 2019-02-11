@@ -32,7 +32,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 // Returns App To Index.HTML
 const app = (
     <Provider store={store}> 
-        <BrowserRouter>
+        <BrowserRouter basename="/React-Burger-Redux">
             <App/>
         </BrowserRouter>
     </Provider>

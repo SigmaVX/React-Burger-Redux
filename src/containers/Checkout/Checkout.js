@@ -1,10 +1,15 @@
 import React, {Component} from "react";
 import Summary from "../../components/Order/Summary/Summary";
-import ContactData from "./ContactData/ContactData";
+// import ContactData from "./ContactData/ContactData";
 import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 
 class Checkout extends Component{
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
+        document.getElementById("burger-wrap").style.backgroundColor = "transparent";
+    }
 
     cancelCheckout=()=>{
         this.props.history.goBack();
@@ -28,8 +33,10 @@ class Checkout extends Component{
                         checkoutContinue={this.continueCheckout}
                     />
 
-                    {/* Render Checkout */}
+                    {/* Render Checkout -- not used
                     <Route path={"/checkout/contact-data"} component={ContactData} />
+                    */}
+                    
                 </div>
             )  
         }

@@ -1,27 +1,53 @@
 .Auth{
-    margin: 20px auto;
+    /* margin: 10% auto; */
     position: absolute;
-    top: 35%;
-    left: 20%;
-    width: 80%;
+    top: 10%;
+    left: 15%;
+    width: 70%;
     text-align: center;
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #eee;
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
+    background-color: #aaa;
+}
+
+.AuthWrapper{
+    background-color: tan;
+    min-height: 100vh;
+    position: relative;
 }
 
 .Auth input{
     border-radius: 10px;
+    margin: 5px auto;
+    width: 83%;
 }
 
 h2 {
     text-align: center; 
 }
 
-@media (min-width: 600px){
-    .Auth{
-        width: 500px;
-    }
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    text-align: center; 
 }
+input::-moz-placeholder { /* Firefox 19+ */
+    text-align: center;
+
+}
+input:-ms-input-placeholder { /* IE 10+ */
+    text-align: center;
+
+}
+input:-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+}
+
+
+/* @media (min-width: 600px){
+    .Auth{
+        width: 70%;
+        
+    }
+} */

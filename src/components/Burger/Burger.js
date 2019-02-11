@@ -47,10 +47,10 @@ const Burger = (props) =>{
 
 
     return(
-        <div className={style.BurgerWrap}>
+        <div className={style.BurgerWrap} id="burger-wrap">
             <div  className={style.Burger}>
                 <Ingredients type="bread-top"/>
-                {listArray}
+                    {listArray}
                 <Ingredients type="bread-bottom"/>
 
             </div>

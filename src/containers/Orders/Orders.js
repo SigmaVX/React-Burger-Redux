@@ -13,22 +13,36 @@ class Orders extends Component{
         // console.log(this.props.userId);
       this.props.onFetchOrders(this.props.token, this.props.userId);
     }
+
     render(){
 
         let orders = <Spinner />;
-        if (!this.props.loading){
+        if (!this.props.loading && this.props.orders.length > 0){
             orders = (
                 <div>
-                    <h1 style={{textAlign: "center", paddingTop: "30px"}}>Order History</h1>
-                    {this.props.orders.map(order =>(
+                    <h1 style={{textAlign: "center", paddingTop: "30px", minHeight: "100vh"}}>Order History</h1>
+                    {
+                        
+                    this.props.orders.map(order =>(
                         <Order 
                             key={order.id}
                             ingredients={order.ingredients}
                             // Add + To Convert String to Number Type
                             price={+order.orderPrice}
                             id={order.id}
-                            />
+                        />
                     ))}
+                </div>
+            )
+        }
+
+        if(this.props.orders.length === 0 ){
+            orders = (
+                <div>
+                    <h1 style={{textAlign: "center", paddingTop: "30px", minHeight: "100vh"}}>
+                        No Orders Yet <br/>
+                        Head To The Home Page To Start
+                    </h1>
                 </div>
             )
         }

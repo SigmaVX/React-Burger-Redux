@@ -126,21 +126,24 @@ class Auth extends Component{
         }
 
         return(
-            <div className={style.Auth}>
-                {redirectNow}
-                {this.state.isSignUp ? <h2>Sign Up</h2> : <h2>Login</h2>}
-                {errorMessage}
-                <form onSubmit={this.submitHandler}>
-                    {form}
-                    <Button btnType="Success" >Submit</Button>
-                </form>
-                <Button
-                    clicked={this.swithAuthMode} 
-                    btnType="Danger"
-                >
-                    {this.state.isSignUp ? "Switch To Login" : "Switch To Sign Up"}
-                </Button>
-            </div>
+
+            <section className={style.AuthWrapper}>
+                <div className={style.Auth}>
+                    {redirectNow}
+                    {this.state.isSignUp ? <h2>Sign Up</h2> : <h2>Login</h2>}
+                    {errorMessage}
+                    <form onSubmit={this.submitHandler}>
+                        {form}
+                        <Button btnType="Success" >Submit</Button>
+                    </form>
+                    <Button
+                        clicked={this.swithAuthMode} 
+                        btnType="Danger"
+                    >
+                        {this.state.isSignUp ? "Switch To Login" : "Switch To Sign Up"}
+                    </Button>
+                </div>
+            </section>
         );
     }
 }

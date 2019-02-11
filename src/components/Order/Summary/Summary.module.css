@@ -1,7 +1,22 @@
+.BurgerWrapper{
+    width: 100%;
+    margin: 10px, auto;
+}
+
+.ButtonWrapper{
+    width: 83%;
+    margin: 0px auto;
+}
+
 .Summary{
     text-align: center;
     margin: auto;
     width: 80%;
+    padding: 20px;
 
+}
+
+.Sumary h1{
+    font-size: 40px;
 }
 

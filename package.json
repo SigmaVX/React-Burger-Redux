@@ -1,6 +1,7 @@
 {
-  "name": "react-burger",
-  "version": "0.1.0",
+  "name": "react-redux-burger",
+  "version": "1.0.0",
+  "homepage": "https://sigmavx.github.io/React-Burger-Redux",
   "private": true,
   "dependencies": {
     "@babel/core": "7.1.0",
@@ -30,6 +31,7 @@
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
+    "gh-pages": "^2.0.1",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
@@ -49,6 +51,7 @@
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "react-scroll-into-view": "^1.5.0",
     "react-test-renderer": "^16.7.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
@@ -58,11 +61,13 @@
     "terser-webpack-plugin": "1.1.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
-    "webpack-dev-server": "3.1.9",
+    "webpack-dev-server": "3.1.11",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"

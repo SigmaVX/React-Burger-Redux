@@ -192,12 +192,12 @@ class ContactData extends Component{
         }
 
         return(
-            <div className={style.ContactData}>
-                <h4>Enter Contact Data</h4>
-                {form}
-
-
-            </div>
+            <section className={style.ContactDataWrapper}>
+                <div className={style.ContactData} id="user-form">
+                    <h4>Enter Contact Data</h4>
+                    {form}
+                </div>
+            </section>
         );
     }
 }
