@@ -2,6 +2,7 @@
     font-size: 40px;
     color: lightblue;
     font-family: 'Ultra', serif;
+    min-height: 100px;
 }
 
 .Burger{
@@ -28,6 +29,7 @@
     margin: 0px auto;
     padding: 10px 0px;
     height: 480px;
+    display: flex;
   
 }
 
